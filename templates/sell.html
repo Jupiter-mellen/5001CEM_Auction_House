@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{%block title%}Sell Page{%endblock%}
+
+{%block content%}
+
+<form action="#" method="POST" id="text-post"></form>
+<form action="/upload" method="POST" id="file-post"></form>
+
+<h1 class="text-center">Sell Item:</h1>
+
+<div class="container pt-3">
+    <div class="row">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Item name</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Enter here:" aria-label="Username" aria-describedby="basic-addon1" name="item_name" form="text-post">
+            <p><br></p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <input type="file" class="custom-file-input" name="item_img"  accept="image/*" form="file-post"><br>
+        <p><br></p>
+    </div>
+
+    <div class="row">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Item<br>Description</span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" name="item_desc" form="text-post"></textarea>
+            </div>
+    </div>
+    <p><br></p>
+    <input type="submit" value="submit" class="btn btn-dark" style="float: right;" form="text-post">
+</div>
+
+{%endblock%}
