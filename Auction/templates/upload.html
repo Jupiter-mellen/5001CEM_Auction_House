@@ -1,0 +1,21 @@
+{%extends "base.html"%}
+
+{%block title%}Upload{%endblock%}
+
+{%block content%}
+
+
+<form action="/upload" method="POST" enctype= "multipart/form-data">
+    <div class="container-fluid">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="img" name="img" accept="image/*">
+            <br>
+            <label class="custom-file-input" name="img" id=img for="img">Select image</label>
+        </div>
+    </div>
+    <br>
+    <button type = "submit" class="btn btn-primary">Upload image</button>
+
+
+</form>
+{%endblock%}

@@ -1,0 +1,48 @@
+{%extends "base.html"%}
+{%block title%}User{%endblock%}
+
+{%block content%}
+<div style="text-align: center;">
+
+    <h1>Welcome, {{user.username}}</h1>
+    <a href="/sell" class="btn btn-dark btn-lg " role="button" aria-disabled="true">Sell new item</a>
+    <p>
+    <br>
+    <br>
+    <h2>Profile:</h2>
+    <br>
+    Email: {{user.email}}
+    <br>
+    Phone Number: 0{{user.phone}}
+    </p>
+
+</div>
+
+<div class="container-fluid" style="border-radius:.25rem!important; border:1px solid #313131; box-shadow: darkgray !important;">
+    <p>
+        <h2>
+            Your Current Items:
+        </h2>
+        <br><br>
+    </p>
+    
+
+    <div class ="row">
+        {%for item in values%}
+            <div class = "col">
+                <div class="card" style="width: 250px !important;">
+                    <img class="card-img-top" src = "{{url_for('static', filename='images/'+item.img_name)}}" alt="No Image Uploaded" style="height: 250px !important;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">{{item.start_date.date()}}<br>{{item.username}}</p>
+                            <form action="#" method="POST">
+                                <button type="submit" name="id" value="{{item.item_id}}" class="btn btn-primary">More info</button>
+                                <button type="submit" name="sold" value="{{item.item_id}}" class="btn btn-primary">Sold</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+
+{%endblock%}

@@ -1,0 +1,32 @@
+{%extends "base.html"%}
+{%block title%}Home Page{%endblock%}
+
+{%block content%}
+
+<h1 class="text-center">Home page:</h1>
+
+
+<div class="container">
+    
+    <div class ="row">
+        {%for item in values%}
+            {%if item.sold == 0%}
+                <div class = "col">
+                    <div class="card" style="width: 250px !important;">
+                        <img class="card-img-top" src = "{{url_for('static', filename='images/'+item.img_name)}}" alt="No Image Uploaded" style="height: 250px !important;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <p class="card-text">{{item.start_date.date()}}<br>{{item.username}}</p>
+                            {%if info_check%}
+                                <form action="#" method="POST">
+                                    <button type="submit" name="id" value="{{item.item_id}}" class="btn btn-primary">More info</button>
+                                </form>
+                            {%endif%}
+                        </div>
+                    </div>
+                </div>
+            {%endif%}
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}
