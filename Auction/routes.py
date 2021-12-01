@@ -105,7 +105,12 @@ def view():
 '''
 
 
-
+'''
+Register function:
+- Validates inputs, and enters new fields into User table
+- Takes username, password, email and phone 
+- Returns register.html
+'''
 
 @app.route("/register", methods = ["POST", "GET"])
 def register():
@@ -131,7 +136,13 @@ def register():
 
     return render_template("register.html")
 
-    
+
+'''
+Login function
+- checks if input is in User table, and adds user to the session
+- Takes username and password
+- Returns login.html
+'''
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
@@ -163,6 +174,28 @@ def login():
 
     return render_template("login.html")
 
+'''
+Login Function:
+- Removes user from session
+- Redirects to the login page
+'''
+
+@app.route("/logout")
+def logout():
+    if "user" in session:
+        user = session["user"]
+        session.clear()
+        flash(f"{user}, you have logged out successfully", "info")
+    return redirect(url_for("login"))
+
+
+'''
+User function:
+- checks for a button click on user page
+    - sold button alters field in Item table to True 
+    - id (more details) adds id to session and redirects to item page for more details about that item
+- Returns user.html
+'''
 
 @app.route("/user", methods=["POST", "GET"])
 def user():
@@ -190,17 +223,9 @@ def user():
         flash("You are not logged in!")
         return redirect(url_for("login"))
 
-@app.route("/logout")
-def logout():
-    if "user" in session:
-        user = session["user"]
-        print(session)
-        session.clear()
-        print(session)
-        flash(f"{user}, you have logged out successfully", "info")
-    return redirect(url_for("login"))
-
-
+'''
+redundant function
+was used to get image uploading working 
 @app.route("/upload", methods=["GET", "POST"])
 def upload():
     if request.method == "POST":
@@ -212,6 +237,17 @@ def upload():
             flash("Image saved")
             redirect(request.url)
     return render_template("upload.html")
+'''
+
+'''
+Sell Function:
+- checks if user is in session, 
+validates inputs are not NULL,
+makes sure image name is unique and saves image it image folder 
+adds item name desc and image name to Item table
+- Takes item name, description and image
+- Returns sell.html
+'''
 
 @app.route("/sell" , methods=["POST", "GET"])
 def sell():
@@ -228,9 +264,6 @@ def sell():
                 item_user = session["user"]
                 img_name = img.filename
                 img_name = unique_img_name(img_name)
-                print(img_name)
-                print(img_name)
-                print(img_name)
                 img.save(os.path.join(app.config["IMAGE_UPLOADS"], img_name))
 
 

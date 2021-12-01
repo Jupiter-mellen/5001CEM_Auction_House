@@ -1,19 +1,26 @@
 {% extends "base.html" %}
+<!-- 
+Login Page
+Allows user to input Username and Password 
+to log into the website and allow you to fully access the website 
+
+-->
 {%block title%}Login Page{% endblock %}
 
 
 {%block content %}
 
+<!--Form to send both inputs-->
 <form action="#" method="POST" id="login_post" ></form>
 
 <h1 class="text-center">Login:</h1>
 
+<!--Container is in rows for each input-->
 <div class="container pt-3">
-
     <div class="row">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Username:    </span>
+                <span class="input-group-text" id="basic-addon1">Username:</span>
             </div>
             <input type="text" class="form-control" placeholder="Enter here:" aria-label="Username" aria-describedby="basic-addon1" name="Username" form="login_post">
             <p><br></p>
@@ -29,7 +36,7 @@
             <p><br></p>
         </div>
     </div>
-
+    <!--Submit button to trigger form-->
     <input type="submit" value="Login" class="btn btn-dark" style="float: right;" form="login_post">
 
 

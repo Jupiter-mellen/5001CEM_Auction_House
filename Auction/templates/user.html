@@ -1,7 +1,26 @@
 {%extends "base.html"%}
+<!--User Template
+This is the users profile page
+Includes:
+    - User details:
+        - Name , Email , Phone number 
+        - Sell new item Button
+    - Users Items:
+        - Name, Start date
+        - More info Button
+        - Sold Button
+Arguments: 
+user:
+    - username, email, phone
+item:
+    - name, date , username
+These are used to dipslay the current user in session and that users specific items
+-->
+
 {%block title%}User{%endblock%}
 
 {%block content%}
+<!-- User info Block: -->
 <div style="text-align: center;">
 
     <h1>Welcome, {{user.username}}</h1>
@@ -18,6 +37,7 @@
 
 </div>
 
+<!-- Users item Block-->
 <div class="container-fluid" style="border-radius:.25rem!important; border:1px solid #313131; box-shadow: darkgray !important;">
     <p>
         <h2>
@@ -28,6 +48,7 @@
     
 
     <div class ="row">
+        <!-- Loops over each item that was passed and puts it in a bootstrap card-->
         {%for item in values%}
             <div class = "col">
                 <div class="card" style="width: 250px !important;">

@@ -1,7 +1,11 @@
 from Auction import db
 from datetime import datetime, timedelta
 
-
+'''
+User Table
+takes:
+Username , Password , Email , Phone Number
+'''
 class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100))
@@ -15,7 +19,11 @@ class User(db.Model):
         self.email = email
         self.phone = phone
 
-
+'''
+User Table
+takes:
+Item Name , Image Name , Item Description , Start Date , End Date , Username(Forign key from User Table) , Current Bid , Sold 
+'''
 class Item(db.Model):
     item_id = db.Column(db.Integer,  primary_key= True, nullable=False)
     name = db.Column(db.String(50))

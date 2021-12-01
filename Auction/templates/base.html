@@ -1,3 +1,12 @@
+<!--
+  Base Template:
+  Used as a template for all other templates to inherit from 
+  Includes Nav bar 
+  And message flashing
+  + Title block
+  + Content block
+-->
+
 <html>
     <head>
         <link href="{{url_for('static', filename = 'stylesheet.css')}}" rel = "stylesheet">
@@ -21,6 +30,7 @@
               <li class="nav-item">
                 <a class="nav-link, text-muted" aria-current="page" href="login">Login</a>
               </li>
+              <!--If user is logged in it shows logout, Profile, Sell links-->
               {%if 'user' in session%}
               <li class="nav-item">
                 <a class="nav-link, text-muted" aria-current="page" href="/logout">Logout</a>
@@ -48,7 +58,9 @@
         <h1>{%block header%}{%endblock%}</h1>
         
         <div class="container-fluid">
-          
+
+          <!-- flashes messages 
+          Loops over each flashed message-->
           {%with messages = get_flashed_messages()%}
             {%if messages%}
                 {%for msg in messages%}
@@ -56,7 +68,7 @@
                 {%endfor %}
             {%endif %}
           {%endwith%}
-
+          <!-- space for content of each daughter template-->
           {%block content%}
           {%endblock%}
         </div>

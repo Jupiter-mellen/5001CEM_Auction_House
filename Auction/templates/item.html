@@ -1,9 +1,24 @@
 {%extends 'base.html'%}
-
+<!-- Item Template:
+- shows detailed description of the current 
+- a bidding box
+-->
 {%block content%}
 
 <h1 class="text-center">{{item_data.name}}:</h1>
 
+<!-- container for item information
+-Item image is displayed from item data was passed
+
+Arguments:
+Item:
+    -Item Desctiption 
+    -Item Date
+
+-User 
+    - Phone number
+    - Email
+-->
 <div class="container-fluid" ">
     {%with item = item_data%}
         <img src="{{url_for('static', filename='images/'+item.img_name)}}" alt="..." class="img-thumbnail" style="height: 500px; width: 500px; ">
@@ -18,12 +33,17 @@
 
 
 
-        <!-- Button trigger modal -->
+        <!-- Button trigger Auction box  -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Auction
     </button>
     
-    <!-- Modal -->
+    <!-- Auction box
+    Includes:
+    Current bid
+    Allows you to send a new bid
+    Bid must be > current bid
+    -->
     <form action="#" method="POST" id="auction_form"> </form>
    
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

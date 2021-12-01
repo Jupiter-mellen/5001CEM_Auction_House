@@ -1,4 +1,16 @@
 {%extends "base.html"%}
+<!--Home Page Template
+Contains all items still on sale
+allows user to see more info if logged in
+
+Arguments:
+Item:
+    - sold
+    - name
+    - start date
+    - username
+    - 
+-->
 {%block title%}Home Page{%endblock%}
 
 {%block content%}
@@ -9,14 +21,18 @@
 <div class="container">
     
     <div class ="row">
+        <!-- Loops over each item that hasent been sold-->
         {%for item in values%}
             {%if item.sold == 0%}
                 <div class = "col">
+                    <!--PLaces item in a bootstrap card with image, Title, and description
+                    Also has more information button that links to item page-->
                     <div class="card" style="width: 250px !important;">
                         <img class="card-img-top" src = "{{url_for('static', filename='images/'+item.img_name)}}" alt="No Image Uploaded" style="height: 250px !important;">
                         <div class="card-body">
                             <h5 class="card-title">{{item.name}}</h5>
                             <p class="card-text">{{item.start_date.date()}}<br>{{item.username}}</p>
+                            <!--Checks if user is logged in to view more information -->
                             {%if info_check%}
                                 <form action="#" method="POST">
                                     <button type="submit" name="id" value="{{item.item_id}}" class="btn btn-primary">More info</button>
