@@ -71,7 +71,7 @@ def home():
         session['current_item_id'] = current_item
         return redirect(url_for('item'))
     
-    return render_template("index.html", values=Item.query.all(), info_check = info)
+    return render_template("home.html", values=Item.query.all(), info_check = info)
 
 
 '''

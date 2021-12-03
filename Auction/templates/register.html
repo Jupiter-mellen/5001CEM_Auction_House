@@ -1,14 +1,15 @@
 {%extends "base.html"%}
-<!--Register Template:
-Inputs:
-    - Username , Password , Email and Phone
-Sends inputs through one form to be proccessed in routes.py
-Validation is done through back end-->
+
 
 {%block title%}Register{%endblock%}
 
 {%block content%} 
 
+<!--Register Template:
+Inputs:
+    - Username , Password , Email and Phone
+Sends inputs through one form to be proccessed in routes.py
+Validation is done through back end-->
 <form action="#" method="POST" id="register_post" ></form>
 
 <h1 class="text-center">Register:</h1>
@@ -21,7 +22,7 @@ Validation is done through back end-->
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Username:    </span>
             </div>
-            <input type="text" class="form-control" placeholder="Enter here:" aria-label="Username" aria-describedby="basic-addon1" name="Username" form="register_post">
+            <input type="text" class="form-control" placeholder="Enter here:" aria-label="Username" aria-describedby="basic-addon1" name="Username" form="register_post" required> 
             <p><br></p>
         </div>
     </div>
@@ -31,7 +32,7 @@ Validation is done through back end-->
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Password:    </span>
             </div>
-            <input type="text" class="form-control" placeholder="Enter here:" aria-label="Password" aria-describedby="basic-addon1" name="Password" form="register_post">
+            <input type="password" class="form-control" placeholder="Enter here:" aria-label="Password" aria-describedby="basic-addon1" name="Password" form="register_post" required>
             <p><br></p>
         </div>
     </div>
@@ -41,7 +42,7 @@ Validation is done through back end-->
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Email:       </span>
             </div>
-            <input type="text" class="form-control" placeholder="Enter here:" aria-label="Email" aria-describedby="basic-addon1" name="Email" form="register_post">
+            <input type="email" class="form-control" placeholder="Enter here:" aria-label="Email" aria-describedby="basic-addon1" name="Email" form="register_post" required>
             <p><br></p>
         </div>
     </div>
@@ -51,7 +52,7 @@ Validation is done through back end-->
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Phone Number:</span>
             </div>
-            <input type="text" class="form-control" placeholder="Enter here:" aria-label="Phone" aria-describedby="basic-addon1" name="Phone" form="register_post">
+            <input type="number" class="form-control" placeholder="Enter here:" aria-label="Phone" aria-describedby="basic-addon1" name="Phone" form="register_post" required>
             <p><br></p>
         </div>
     </div>

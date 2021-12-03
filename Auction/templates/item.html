@@ -1,23 +1,12 @@
 {%extends 'base.html'%}
+{%block content%}
+<h1 class="text-center">{{item_data.name}}:</h1>
 <!-- Item Template:
 - shows detailed description of the current 
 - a bidding box
--->
-{%block content%}
-
-<h1 class="text-center">{{item_data.name}}:</h1>
-
-<!-- container for item information
--Item image is displayed from item data was passed
-
 Arguments:
-Item:
-    -Item Desctiption 
-    -Item Date
-
--User 
-    - Phone number
-    - Email
+Item: Item Desctiption, Item Date
+User: Phone number, Email
 -->
 <div class="container-fluid" ">
     {%with item = item_data%}
@@ -29,9 +18,6 @@ Item:
         <p>Phone number: 0{{user.phone}}</p>
         <p>Email: {{user.email}}</p>
     {%endwith%}
-
-
-
 
         <!-- Button trigger Auction box  -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -57,7 +43,7 @@ Item:
                 <p>Current Bid: {{item_data.current_bid}}</p>
 
                 <p>Make a new bid:</p>
-                <input type="text" name="new_bid" placeholder="Place new bid" form="auction_form">
+                <input type="number" name="new_bid" placeholder="Place new bid" form="auction_form" required>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

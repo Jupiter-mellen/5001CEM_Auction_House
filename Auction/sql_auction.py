@@ -20,12 +20,12 @@ class User(db.Model):
         self.phone = phone
 
 '''
-User Table
+Item Table
 takes:
 Item Name , Image Name , Item Description , Start Date , End Date , Username(Forign key from User Table) , Current Bid , Sold 
 '''
 class Item(db.Model):
-    item_id = db.Column(db.Integer,  primary_key= True, nullable=False)
+    item_id = db.Column(db.Integer,  primary_key= True)
     name = db.Column(db.String(50))
     img_name = db.Column(db.String(50))
     desc = db.Column(db.String(200))
